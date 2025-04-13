@@ -1,6 +1,6 @@
 #include <string.h>
 #include <stdio.h>
-int edit(){
+int edit(char FromMain[]){
 	// mozhno skazat hub zapisey
 	char kg[256] = "hoi maya";
 	char raz[256] = "install gentoo";
@@ -13,9 +13,9 @@ int edit(){
 	scanf("%s", raz);
 	printf("Kakoj TVOJ vies\n");
 	scanf("%s", ves);
+	obosrals:
 	printf("praviljno vviol? [Y/N] \n$ ");
 	scanf("%s", YepOrNop);
-	obosrals:
 	if(!strcmp(YepOrNop, "Y") || !strcmp(YepOrNop, "y")) {
 		printf("\nOke :>\n");
 	} else if(!strcmp(YepOrNop, "N") || !strcmp(YepOrNop, "n"))
@@ -25,7 +25,8 @@ int edit(){
 		goto obosrals;
 	}
 	FILE *barsik;
-	barsik = fopen("manager", "w");
+	// Standartno manager sidit
+	barsik = fopen(FromMain, "w");
 	fputs(kg, barsik);
 	fputs("\n", barsik);
 	fputs(raz, barsik);
